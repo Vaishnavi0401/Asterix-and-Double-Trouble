@@ -1,0 +1,132 @@
+Catalog
+
+gargeeshah@Gargees-MacBook-Air test_cases % python3 test_catalog.py --port 4551 --host localhost
+URL:  http://localhost:4551/product/Barbie
+{"data": {"name": "Barbie", "price": 89.0, "quantity": 1950}}
+URL:  http://localhost:4551/product/Fox
+{"data": {"name": "Fox", "price": 20.99, "quantity": 1274}}
+URL:  http://localhost:4551/product/Tux
+{"data": {"name": "Tux", "price": 25.99, "quantity": 2140}}
+URL:  http://localhost:4551/product/Monopoly
+{"data": {"name": "Monopoly", "price": 101.2, "quantity": 2200}}
+URL:  http://localhost:4551/product/Elephant
+{"data": {"name": "Elephant", "price": 25.99, "quantity": 2200}}
+------------------------------------------------
+URL:  http://localhost:4551/product/Book
+Sorry Book not found
+URL:  http://localhost:4551/product/Pen
+Sorry Pen not found
+URL:  http://localhost:4551/product/Teddy
+Sorry Teddy not found
+URL:  http://localhost:4551/product/Train
+Sorry Train not found
+------------------------------------------------
+URL:  http://localhost:4551/Teddy/Lego
+RuntimeError: Invalid URL: /Teddy/Lego
+------------------------------------------------
+
+Order
+
+gargeeshah@Gargees-MacBook-Air test_cases % python3 test_order.py --port 3678 --host localhost
+URL:  http://localhost:3678/orders/Fox/1
+{"data": {"order_number": 102}}
+URL:  http://localhost:3678/orders/Tux/10
+{"data": {"order_number": 103}}
+URL:  http://localhost:3678/orders/Barbie/22
+{"data": {"order_number": 104}}
+URL:  http://localhost:3678/orders/Fox/1
+{"data": {"order_number": 105}}
+URL:  http://localhost:3678/orders/Tux/10
+{"data": {"order_number": 106}}
+URL:  http://localhost:3678/orders/Barbie/22
+{"data": {"order_number": 110}}
+------------------------------------------------
+URL:  http://localhost:3678/orders/Tux/2000
+Sorry Tux is out of stock or invalid quantity
+URL:  http://localhost:3678/orders/Fox/1000
+Sorry Fox is out of stock or invalid quantity
+URL:  http://localhost:3678/orders/Marbles/2200
+Sorry Marbles is out of stock or invalid quantity
+URL:  http://localhost:3678/orders/Barbie/3000
+Sorry Barbie is out of stock or invalid quantity
+URL:  http://localhost:3678/orders/Elephant/11100
+Sorry Elephant is out of stock or invalid quantity
+URL:  http://localhost:3678/orders/Legos/1500
+Sorry Legos is out of stock or invalid quantity
+------------------------------------------------
+URL:  http://localhost:3678/orders/2
+{"data": {"Order number": "2", "Toy name": "Tux", "Quantity": 10.0}}
+URL:  http://localhost:3678/orders/3
+{"data": {"Order number": "3", "Toy name": "Barbie", "Quantity": 22.0}}
+URL:  http://localhost:3678/orders/1000
+Sorry order number - 1000 doesn't exists
+URL:  http://localhost:3678/orders/400
+Sorry order number - 400 doesn't exists
+------------------------------------------------
+URL:  http://localhost:3678/orders/Tux/-10
+Sorry Tux is out of stock or invalid quantity
+URL:  http://localhost:3678/orders/Tux/0
+Sorry Tux is out of stock or invalid quantity
+URL:  http://localhost:3678/order/Tux/10
+RuntimeError: Invalid URL: /order/Tux/10
+------------------------------------------------
+
+Full Application
+
+argeeshah@Gargees-MacBook-Air test_cases % python3 test_fullapp.py --port 4773 --host localhost
+URL:  http://localhost:4773/product/Barbie
+{"data": {"name": "Barbie", "price": 89.0, "quantity": 1338}}
+URL:  http://localhost:4773/product/Fox
+{"data": {"name": "Fox", "price": 20.99, "quantity": 578}}
+URL:  http://localhost:4773/product/Tux
+{"data": {"name": "Tux", "price": 25.99, "quantity": 1480}}
+URL:  http://localhost:4773/product/Monopoly
+{"data": {"name": "Monopoly", "price": 101.2, "quantity": 1500}}
+URL:  http://localhost:4773/product/Elephant
+{"data": {"name": "Elephant", "price": 25.99, "quantity": 1500}}
+URL:  http://localhost:4773/product/Book
+{"error": {"code": 404, "message": "Toy not found"}}
+URL:  http://localhost:4773/product/Pen
+{"error": {"code": 404, "message": "Toy not found"}}
+------------------------------------------------
+URL:  http://localhost:4773/orders/Fox/1
+{"data": {"order_number": 20}}
+URL:  http://localhost:4773/orders/Tux/10
+{"data": {"order_number": 21}}
+URL:  http://localhost:4773/orders/Barbie/22
+{"data": {"order_number": 22}}
+------------------------------------------------
+URL:  http://localhost:4773/orders/2
+{"data": {"Order number": "2", "Toy name": "Tux", "Quantity": 10.0}}
+URL:  http://localhost:4773/orders/3
+{"data": {"Order number": "3", "Toy name": "Barbie", "Quantity": 22.0}}
+URL:  http://localhost:4773/orders/1000
+{"error": {"code": 400, "message": "Order number doesn't exist"}}
+URL:  http://localhost:4773/orders/400
+{"error": {"code": 400, "message": "Order number doesn't exist"}}
+------------------------------------------------
+URL:  http://localhost:4773/orders/Tux/2000
+Sorry Tux is out of stock or invalid quantity
+{"error": {"code": 400, "message": "Sorry Tux is out of stock or invalid quantity"}}
+URL:  http://localhost:4773/orders/Fox/1000
+Sorry Fox is out of stock or invalid quantity
+{"error": {"code": 400, "message": "Sorry Fox is out of stock or invalid quantity"}}
+URL:  http://localhost:4773/orders/Marbles/2200
+Sorry Marbles is out of stock or invalid quantity
+{"error": {"code": 400, "message": "Sorry Marbles is out of stock or invalid quantity"}}
+URL:  http://localhost:4773/orders/Barbie/3000
+Sorry Barbie is out of stock or invalid quantity
+{"error": {"code": 400, "message": "Sorry Barbie is out of stock or invalid quantity"}}
+URL:  http://localhost:4773/orders/Elephant/11100
+Sorry Elephant is out of stock or invalid quantity
+{"error": {"code": 400, "message": "Sorry Elephant is out of stock or invalid quantity"}}
+URL:  http://localhost:4773/orders/Legos/1500
+Sorry Legos is out of stock or invalid quantity
+{"error": {"code": 400, "message": "Sorry Legos is out of stock or invalid quantity"}}
+------------------------------------------------
+URL:  http://localhost:4773/orders/Tux/-10
+Sorry Tux is out of stock or invalid quantity
+{"error": {"code": 400, "message": "Sorry Tux is out of stock or invalid quantity"}}
+URL:  http://localhost:4773/orders/Tux/0
+Sorry Tux is out of stock or invalid quantity
+{"error": {"code": 400, "message": "Sorry Tux is out of stock or invalid quantity"}}
